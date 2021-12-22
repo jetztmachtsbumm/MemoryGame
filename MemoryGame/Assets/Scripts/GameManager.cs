@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
 
     public void OnCardClicked(MemoryCard card)
     {
+        card.transform.localEulerAngles = new Vector3(90, 0, 0);
+
         if (firstSelectedCard == null)
         {
             firstSelectedCard = card;
@@ -17,17 +19,26 @@ public class GameManager : MonoBehaviour
         else
         {
             secondSelectedCard = card;
-
-            if(firstSelectedCard.getId() == secondSelectedCard.getId())
-            {
-                Destroy(firstSelectedCard.gameObject);
-                Destroy(secondSelectedCard.gameObject);
-            }
-
-            //Reset
-            firstSelectedCard = null;
-            secondSelectedCard = null;
+            Invoke("CheckMatch", 1);
         }
+    }
+
+    public void CheckMatch()
+    {
+        if (firstSelectedCard.getId() == secondSelectedCard.getId())
+        {
+            Destroy(firstSelectedCard.gameObject);
+            Destroy(secondSelectedCard.gameObject);
+        }
+        else
+        {
+            firstSelectedCard.transform.localEulerAngles = new Vector3(-90, 0, 0);
+            secondSelectedCard.transform.localEulerAngles = new Vector3(-90, 0, 0);
+        }
+
+        //Reset
+        firstSelectedCard = null;
+        secondSelectedCard = null;
     }
 
 }
