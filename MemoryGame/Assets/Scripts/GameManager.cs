@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip clipCardUp;
+    [SerializeField] private AudioClip clipCardDown;
+    [SerializeField] private AudioClip clipCardMatch;
 
     private MemoryCard firstSelectedCard;
     private MemoryCard secondSelectedCard;
@@ -13,7 +17,9 @@ public class GameManager : MonoBehaviour
     {
         if (!canClick) return;
 
-        card.transform.localEulerAngles = new Vector3(90, 0, 0);
+        card.SetTargetRotation(90);
+        card.SetTargetHeight(0.05f);
+        audioSource.PlayOneShot(clipCardUp);
 
         if (firstSelectedCard == null)
         {
@@ -31,15 +37,21 @@ public class GameManager : MonoBehaviour
 
     public void CheckMatch()
     {
-        if (firstSelectedCard.getId() == secondSelectedCard.getId())
+        if (firstSelectedCard.GetId() == secondSelectedCard.GetId())
         {
             Destroy(firstSelectedCard.gameObject);
             Destroy(secondSelectedCard.gameObject);
+
+            audioSource.PlayOneShot(clipCardMatch);
         }
         else
         {
-            firstSelectedCard.transform.localEulerAngles = new Vector3(-90, 0, 0);
-            secondSelectedCard.transform.localEulerAngles = new Vector3(-90, 0, 0);
+            firstSelectedCard.SetTargetRotation(-90);
+            secondSelectedCard.SetTargetRotation(-90);
+            firstSelectedCard.SetTargetHeight(0.01f);
+            secondSelectedCard.SetTargetHeight(0.01f);
+
+            audioSource.PlayOneShot(clipCardDown);
         }
 
         //Reset
