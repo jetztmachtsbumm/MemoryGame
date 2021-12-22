@@ -7,9 +7,12 @@ public class GameManager : MonoBehaviour
 
     private MemoryCard firstSelectedCard;
     private MemoryCard secondSelectedCard;
+    private bool canClick = true;
 
     public void OnCardClicked(MemoryCard card)
     {
+        if (!canClick) return;
+
         card.transform.localEulerAngles = new Vector3(90, 0, 0);
 
         if (firstSelectedCard == null)
@@ -19,6 +22,9 @@ public class GameManager : MonoBehaviour
         else
         {
             secondSelectedCard = card;
+
+            canClick = false;
+
             Invoke("CheckMatch", 1);
         }
     }
@@ -39,6 +45,8 @@ public class GameManager : MonoBehaviour
         //Reset
         firstSelectedCard = null;
         secondSelectedCard = null;
+
+        canClick = true;
     }
 
 }
