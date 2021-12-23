@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_LightingSettings: {fileID: 0}
+  m_LightingSettings: {fileID: 4890085278179872738, guid: e1958f234c2ea274498f725efb12d23d, type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1946,6 +1946,23 @@ MonoBehaviour:
   clipCardUp: {fileID: 8300000, guid: 7a11d0b14c2319b46ba47d29425b6274, type: 3}
   clipCardDown: {fileID: 8300000, guid: 8141205e9a286ac4f82c2f436f3590f7, type: 3}
   clipCardMatch: {fileID: 8300000, guid: 6b17a3bd036ed784da087fad82251a99, type: 3}
+  allCards:
+  - {fileID: 288021917}
+  - {fileID: 608739988}
+  - {fileID: 451278729}
+  - {fileID: 229899187}
+  - {fileID: 218362116}
+  - {fileID: 11879689}
+  - {fileID: 1915288213}
+  - {fileID: 247071354}
+  - {fileID: 1979276420}
+  - {fileID: 1796907969}
+  - {fileID: 1021156159}
+  - {fileID: 875202413}
+  - {fileID: 1398289214}
+  - {fileID: 674769646}
+  - {fileID: 179057329}
+  - {fileID: 606473888}
 --- !u!4 &879791435
 Transform:
   m_ObjectHideFlags: 0
